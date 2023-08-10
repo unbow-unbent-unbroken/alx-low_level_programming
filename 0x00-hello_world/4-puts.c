@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * A function that returns prints a series of string using the puts function
+ * main - Entry point
  *
  * Return: Always 0 (Success)
  */
