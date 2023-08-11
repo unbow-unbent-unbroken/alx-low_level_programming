@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: c program to print positive, zero and negative results of a random number
+ * Description: c program to print +ve, zero and -ve results of a random number
  * Return: 0 (Success)
  */
 int main(void)
