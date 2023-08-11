@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-
 /**
  * main - Entry point
  *
- * Description:
+ * Description: c program to print -ve, zero and -ve results of a random number
  * Return 0 (Success)
  */
-
 int main(void)
 {
 	int n;
