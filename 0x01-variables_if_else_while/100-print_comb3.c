@@ -1,30 +1,26 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - Entry point of the program
  *
- * Description: A program that prints all possible different combo of 2 digits
- * Return: 0 (Success)
+ * Description: Prints all possible different combinations of 2 digits,
+ * separated by , followed by space. Only the smallest combination is printed.
+ *
+ * Return: Always 0 (Success)
  */
 
 int main(void)
 {
-	int n;
-	int m;
+	int m, n;
 
-	for (n = 48; n < 58; n++)
+	for (m = 0; m <= 8; m++)
 	{
-		for (m = 48; m < 58; m++)
+		for (n = m + 1; n <= 9; n++)
 		{
-			if (n != m && n < m)
+			putchar(m + '0');
+			putchar(n + '0');
+			if (m < 8 || n < 9)
 			{
-				putchar(n);
-				putchar(m);
-				if (m == 57 && n == 56)
-				{
-					break
-						;
-				}
 				putchar(',');
 				putchar(' ');
 			}
