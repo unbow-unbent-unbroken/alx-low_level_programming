@@ -9,26 +9,27 @@
 
 int main(void)
 {
-	int n, m;
+	int n;
+	int m;
 
-	for (n = '0'; n <= '9'; n++)
+	for (n = 48; n < 58; n++)
 	{
-		for (m = '0'; m <= '9'; m++)
+		for (m = 48; m < 58; m++)
 		{
 			if (n != m && n < m)
 			{
 				putchar(n);
 				putchar(m);
-				if (n == '9' && m == '8')
+				if (m == 57 && n == 56)
 				{
-					break;
+					break
+						;
 				}
 				putchar(',');
 				putchar(' ');
 			}
 		}
 	}
-
 	putchar('\n');
 	return (0);
 }
