@@ -7,10 +7,8 @@
  * Return: 0 (Success)
  */
 
-int _abs(int)
+int _abs(int j)
 {
-	int j;
-
 	if (j < 0)
 	{
 		return (-j);
