@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: A program that prints the alphabets in lowercase 
+ * Description: A program that prints the alphabets in lowercase
  * Return 0 (Success)
  */
 
