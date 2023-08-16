@@ -18,6 +18,4 @@ void print_alpahbet(void)
 	}
 
 	_putchar('\n');
-
-	return (0);
 }
