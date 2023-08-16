@@ -4,6 +4,8 @@
 /**
  * _abs - computes absolute numbers
  *
+ * @j: input number as an integar.
+ *
  * Return: 0 (Success)
  */
 
