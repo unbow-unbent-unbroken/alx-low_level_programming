@@ -14,14 +14,16 @@ int main(void)
 	int c = 0;
 	int d;
 
-	while (b < 4000000)
+	while (b <= 4000000)
 	{
 		if (b % 2 == 0)
+		{
 			c += b;
+		}
 
-		d = c;
-		b += a;
-		a = d;
+		d = a + b;
+		a = b;
+		b = d;
 	}
 	printf("%d\n", c);
 	return (0);
