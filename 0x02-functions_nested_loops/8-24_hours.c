@@ -3,12 +3,9 @@
 
 /**
  * jack_bauer - A function that prints every minutes of the day.
- * starting from 00:00 to 23:59
- *
  * @void: int to add
  *
  * Return: 0 (Success)
- *
  */
 
 void jack_bauer(void)
