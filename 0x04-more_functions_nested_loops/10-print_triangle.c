@@ -10,26 +10,16 @@
 
 void print_triangle(int size)
 {
-	int i;
-	int j;
-	int k;
+	int row, column, x;
 
 	if (size <= 0)
-	{
 		_putchar('\n');
-		return;
-	}
-
-	for (i = 1; i < size; i++)
+	for (row = 0; row < size; row++)
 	{
-		for (j = size - i; j > 1; j--)
-		{
+		for (column = size - row; column > 1; column--)
 			_putchar(' ');
-		}
-		for (k = i + j; k >= 1; k--)
-		{
+		for (x = row + column; x >= 1; x--)
 			_putchar('#');
-		}
 		_putchar('\n');
 	}
 }
