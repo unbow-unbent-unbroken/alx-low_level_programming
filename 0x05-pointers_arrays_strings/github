@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Automatically add all changes
+git add .
+
+# Prompt for commit message
+echo "Enter commit message:"
+read commit_message
+
+# Commit with the provided message
+git commit -m "$commit_message"
+
+# Push changes to remote repository
+git push
+
+# Set GitHub credentials for this session
+git config credential.helper store
+echo "https://unbow-unbent-unbroken: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@github.com" | git credential-store store
+
+# Push changes again to authenticate using the provided credentials
+git push
