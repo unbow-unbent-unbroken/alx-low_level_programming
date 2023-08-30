@@ -10,30 +10,28 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int count = 0;
-	int is_accept;
+	int i;
+	int j;
+	int c;
 
-	while (*s != '\0')
+	i = 0;
+	c = 0;
+
+	while (s[i] != '\0')
 	{
-		is_accept = 0; /* Initialize flag for checking if character is in accept */
-
-		/* Loop the chars in accept and check if the current char in s matches */
-		for (int i = 0; accept[i] != '\0'; i++)
+		j = 0;
+		while (accept[j] != '\0')
 		{
-			if (*s == accept[i])
+			if (s[i] == accept[j])
 			{
-				is_accept = 1; /* Set flag if character is found in accept */
+				c++;
 				break;
 			}
+			j++;
 		}
-
-		if (!is_accept)
-		{
-			break; /* If character is not found in accept, break the loop */
-		}
-
-		count++;
-		s++;
+		if (accept[j] == '\0')
+			break;
+		i++;
 	}
-	return (count);
+	return (c);
 }
