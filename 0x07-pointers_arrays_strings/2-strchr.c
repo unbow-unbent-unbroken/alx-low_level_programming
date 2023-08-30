@@ -13,11 +13,14 @@ char *_strchr(char *s, char c)
 	while (*s != '\0')
 	{
 		if (*s == c)
-			return (s);
-		else if (*(s + 1) == c)
-			return (s + 1);
+		{
+			return (s);  /* Return pointer to the first occurrence of character c */
+		}
 		s++;
 	}
-
-	return (s + 1);
+	if (c == '\0')
+	{
+		return (s);  /* Return pointer to null terminator if char c is '\0' */
+	}
+	return (NULL); /* Return NULL if character c is not found */
 }
