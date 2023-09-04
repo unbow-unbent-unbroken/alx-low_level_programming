@@ -14,7 +14,12 @@
 
 int main(int argc, char *argv[])
 {
-	printf("%d\n", argc - 1);
+	int count = 0;
 
-	return (0);
+	while (argc--)
+	{
+		printf("%s\n", argv[count]);
+		count++;
+	}
+	exit(EXIT_SUCCESS);
 }
