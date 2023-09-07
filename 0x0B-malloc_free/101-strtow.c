@@ -1,53 +1,77 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "main.h"
 
 /**
- * strtow - Splits a string into words.
- * @str: The input string.
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
  *
- * Return: A pointer to an array of strings (words) or NULL on failure.
+ * Return: number of words
  */
+int count_word(char *s)
+{
+	int flag, c, w;
 
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
+	{
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
+	}
+
+	return (w);
+}
+/**
+ * **strtow - splits a string into words
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
+ */
 char **strtow(char *str)
 {
-	if (str == NULL || str[0] == '\0')
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
+
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
 		return (NULL);
 
-	/* Count the number of words */
-	int word_count = 0;
-	char *token = strtok(str, " ");
-	while (token != NULL)
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
+
+	for (i = 0; i <= len; i++)
 	{
-		word_count++;
-		token = strtok(NULL, " ");
-	}
-
-	if (word_count == 0)
-		return (NULL);
-
-	/* Allocate memory for the array of words */
-	char **words = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (words == NULL)
-		return (NULL);
-
-	/* Extract and copy words */
-	token = strtok(str, " ");
-	for (int i = 0; i < word_count; i++)
-	{
-		words[i] = strdup(token); /* Use strdup to allocate and copy each word */
-		if (words[i] == NULL)
+		if (str[i] == ' ' || str[i] == '\0')
 		{
-			/* Memory allocation failed, free previously allocated words and return NULL */
-			for (int j = 0; j < i; j++)
-				free(words[j]);
-			free(words);
-			return (NULL);
+			if (c)
+			{
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
+			}
 		}
-		token = strtok(NULL, " ");
+		else if (c++ == 0)
+			start = i;
 	}
 
-	words[word_count] = NULL;
-	return (words);
+	matrix[k] = NULL;
+
+	return (matrix);
 }
