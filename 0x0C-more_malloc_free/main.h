@@ -3,6 +3,6 @@
 
 int _putchar(char c);
 
-*malloc_checked(unsigned int b);
+void *malloc_checked(unsigned int b);
 
 #endif /* MAIN_H */
