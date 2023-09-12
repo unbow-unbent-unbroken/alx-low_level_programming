@@ -10,7 +10,8 @@
  * Description: This structure defines a dog with its name, age, and owner.
  */
 
-struct dog {
+struct dog
+{
 	char *name;
 	float age;
 	char *owner;
