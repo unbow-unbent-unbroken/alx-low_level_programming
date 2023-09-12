@@ -24,14 +24,8 @@ void print_dog(struct dog *d);
 /**
  * struct dog_t - Defines the new type as a name for the type struct dog
  *
- *
  */
 
-struct dog_t
-{
-	char *name;
-	float age;
-	char *owner;
-}
+typedef struct dog dog_t;
 
 #endif /* DOG_H */
