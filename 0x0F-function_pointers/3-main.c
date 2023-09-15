@@ -14,6 +14,7 @@
 int main(int argc, char *argv[])
 {
 	int num1, num2, result;
+	char d;
 	int (*operation)(int, int);
 
 	if (argc != 4)
@@ -31,6 +32,14 @@ int main(int argc, char *argv[])
 	{
 		printf("Error\n");
 		return (99);
+	}
+
+	d = *argv[2];
+
+	if (d == '/' || d == '%' && num2 == 0)
+	{
+		printf("Error\n");
+		return (100);
 	}
 
 	result = operation(num1, num2);
