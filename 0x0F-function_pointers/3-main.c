@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
 	d = *argv[2];
 
-	if (d == '/' || d == '%' && num2 == 0)
+	if ((d == '/' || d == '%') && num2 == 0)
 	{
 		printf("Error\n");
 		return (100);
