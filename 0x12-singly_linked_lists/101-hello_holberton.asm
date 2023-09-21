@@ -1,17 +1,15 @@
-section .data
-    hello db "Hello, Holberton", 10, 0  ; The string to print followed by a newline character and null terminator
+SECTION .data
+msg:	db "Hello, Holberton", 0
+fmt:	db "%s", 10, 0
 
-section .text
-    global main
-
-extern printf
-
+	SECTION .text
+	extern printf
+	global main
 main:
-    ; Call printf to print the string
-    mov rdi, hello
-    call printf
+	mov esi, msg
+	mov edi, fmt
+	mov eax, 0
+	call printf
 
-    ; Exit the program
-    mov rax, 60         ; syscall number for exit
-    xor rdi, rdi        ; status code 0
-    syscall
+	mov eax, 0
+	ret
