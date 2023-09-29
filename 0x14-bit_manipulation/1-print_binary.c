@@ -5,7 +5,7 @@
  * print_binary - A function that prints the binary rep of a num.
  * @n: The numeber to be repped.
  *
- * Return: 0 Success.
+ * Return: No return.
  */
 
 void print_binary(unsigned long int n)
