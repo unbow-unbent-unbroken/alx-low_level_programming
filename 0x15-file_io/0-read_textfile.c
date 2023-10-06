@@ -12,46 +12,33 @@
  *
  * Return: actual number of letters it could read and print
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file_descriptor;
-	ssize_t length_read, length_write;
+	int fd;
+	ssize_t lenr, lenw;
 	char *buffer;
 
 	if (filename == NULL)
-	{
 		return (0);
-	}
-
-	file_descriptor = open(filename, O_RDONLY);
-	if (file_descriptor == -1)
-	{
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 		return (0);
-	}
-
 	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
-		close(file_descriptor);
+		close(fd);
 		return (0);
 	}
-
-	length_read = read(file_descriptor, buffer, letters);
-	close(file_descriptor);
-	if (length_read == -1)
+	lenr = read(fd, buffer, letters);
+	close(fd);
+	if (lenr == -1)
 	{
 		free(buffer);
 		return (0);
 	}
-
-	length_write = write(STDOUT_FILENO, buffer, length_read);
+	lenw = write(STDOUT_FILENO, buffer, lenr);
 	free(buffer);
-
-	if (length_read != length_write)
-	{
+	if (lenr != lenw)
 		return (0);
-	}
-
-	return (length_write);
+	return (lenw);
 }
