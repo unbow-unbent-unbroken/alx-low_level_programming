@@ -1,9 +1,8 @@
-#include "main.h"
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "main.h"
 
 /**
  * read_textfile - reads a text file and prints it to the POSIX standard output
@@ -15,14 +14,14 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file_descriptor;
-	ssize_t length_read, length_written;
-	char *buffer;
-
 	if (filename == NULL)
 	{
 		return (0);
 	}
+
+	int file_descriptor;
+	ssize_t bytes_read, bytes_written;
+	char *buffer;
 
 	file_descriptor = open(filename, O_RDONLY);
 	if (file_descriptor == -1)
@@ -30,27 +29,30 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	buffer = malloc(sizeof(char) * letters);
+	buffer = malloc(letters);
 	if (buffer == NULL)
 	{
-		close(fd);
+		close(file_descriptor);
 		return (0);
 	}
 
-	length_read = read(file_descriptor, buffer, letters);
-	close(file_descriptor);
-	if (length_read == -1)
+	bytes_read = read(file_descriptor, buffer, letters);
+	if (bytes_read == -1)
 	{
+		close(file_descriptor);
 		free(buffer);
 		return (0);
 	}
 
-	length_written = write(STDOUT_FILENO, buffer, length_read);
+	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+
+	close(file_descriptor);
 	free(buffer);
-	if (length_read != length_written)
+
+	if (bytes_written != bytes_read)
 	{
 		return (0);
 	}
 
-	return (length_written);
+	return (bytes_written);
 }
