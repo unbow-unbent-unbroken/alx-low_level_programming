@@ -21,6 +21,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	/* Set the size of the hash table */
 	new_table->size = size;
+
 	/* Allocate memory or the array f pointers to linked lists */
 	new_table->array = malloc(sizeof(hash_table_t *) * size);
 
