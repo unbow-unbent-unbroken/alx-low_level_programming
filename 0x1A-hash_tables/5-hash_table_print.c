@@ -1,11 +1,9 @@
 #include "hash_tables.h"
 
 /**
- * hash_table-print - A function that prints a hash table
+ * hash_table_print - A function that prints a hash table
  * @ht: Is the hash table
  *
- * Description: Key/value pairs are printed in the order
- * they appear in the array of the hash table.
  */
 
 void hash_table_print(const hash_table_t *ht)
